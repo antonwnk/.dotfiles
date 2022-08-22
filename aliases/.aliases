@@ -1,0 +1,110 @@
+# General aliases
+alias cd..="cd .."
+alias cdd="cd .."
+alias cddd="cd ../.."
+alias ll="ls -lh"
+alias la="ls -lah"
+alias grep="grep --color=auto"
+#alias utop="top -u $USER"
+alias lc="wc -l"
+alias ppath='for p in $path; do echo $p ; done'
+alias chx="chmod +x"
+alias diffy="diff -y"
+alias diffd="diff -rq"
+alias nv="nvim"
+alias nvi="nvim -R"
+alias nview="nvim -R"
+nvin() { ( cd "$1" && nvim . ) }
+alias untargz="tar -zxvf"
+alias cls=clear
+alias datefull="date +%F"
+alias datets="date +%s"
+atv() { source "${1:-.venv}/bin/activate" ; }
+alias ipy="ipython --TerminalInteractiveShell.editing_mode=vi"
+alias ipyl="ipython --profile=ipylab --TerminalInteractiveShell.editing_mode=vi"
+countf() { ls "$@"| wc -l ; }
+yesterdate() { date --date="$1 days ago" ; }
+math() { echo "$(( $@ ))" }
+# from stefaanlippens.net/pretty-csv.html
+pretty_csv() { perl -pe 's/((?<=,)|(?<=^)),/ ,/g;' "$@" | column -t -s, | less -F -S -X -K ; }
+pretty_tsv() { perl -pe 's/((?<=\t)|(?<=^))\t/ \t/g;' "$@" | column -t -s, | less -F -S -X -K ; }
+# end from :D
+b64dec() { echo -n "$@" | base64 -d ; }
+alias scrn="screen -S"
+alias scrls="screen -ls"
+alias scrr="screen -r"
+alias scrx="screen -x"
+
+# Python related
+gpip() { PIP_REQUIRE_VIRTUALENV=0 pip "$@" ; }
+
+# Kubernetes (additional) stuff
+kgrep() { alias | grep "kubectl $@" ; }
+#kgpn() { kubectl get po --namespace="$1" "${@:2}" ; } # Already existed actually
+alias kdpn="kubectl describe po -n"
+alias kgn="kubectl get -n"
+alias kgan="kubectl get all -n"
+alias kdn="kubectl describe -n"
+alias kgaax="kubectl get all --all-namespaces | grep -v kube-system"
+alias kgadef="kubectl get all --namespace=default"
+alias kgra="kubectl get --all-namespaces"
+alias kdesc="kubectl describe"
+alias kget="kubectl get"
+alias kubecurl="kubectl run --quiet -it --rm --restart=Never curlpod --image=curlimages/curl curl"
+alias kdebugpod="kubectl run -it --rm --restart=Never curlpod --image=curlimages/curl /bin/sh"
+alias kdebugpodub="kubectl run -it --rm --restart=Never ubuntu --image=ubuntu"
+alias kdebugpodpy="kubectl run -it --rm --restart=Never python3 --image=python:3.8"
+
+alias ksa="kubectl get -n spark-operator sparkapplications"
+alias ksap="kubectl get -n spark-operator po"
+
+alias mci="mc --insecure"
+
+# Docker aliases
+alias d=docker
+alias dlf="docker logs -f"
+alias dip="docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}'"
+dkr() { DKRID=$(docker "$@") ; echo $DKRID ; }
+dkrbash() { docker exec -it "$@" bash ; }
+dkrsh() { docker exec -t "$@" sh ; }
+
+# Useful networking
+alias snifflocalhostport="sudo tcpflow -X /dev/null -p -c -i lo port"
+
+# Git
+alias gfe="git fetch && git status"
+alias gdc="git diff --cached"
+alias gdn="git diff --name-status"
+ls-tracked() { git ls-tree -r "${@:-$(git rev-parse HEAD)}" --name-only | fzf }
+gogit () {
+        if [[ -d "$@" ]]
+        then
+                cd "$@" && git fetch && git status && cd -
+        else
+                git clone "$@"
+        fi
+}
+bdiff() {
+    git diff --name-only --diff-filter=d | xargs bat --diff
+}
+
+# shell editing aliases
+alias rced="nvim ~/.zshrc"
+alias rcld="source ~/.zshrc"
+
+alias enved="nvim ~/.zshenv"
+alias envld="source ~/.zshenv"
+
+alias aled="nvim ~/.aliases"
+alias alld="source ~/.aliases"
+
+alias vied="nvim ~/.vimrc" 
+alias nved="nvim ~/.config/nvim"
+
+# Apt
+alias upd="sudo apt-get update"
+alias upg="sudo apt-get upgrade"
+
+# ARES
+alias devvenv="source ~/ARES/.devvenv/bin/activate"
+alias buildenv="source ~/EKS_ARES/source.env"
