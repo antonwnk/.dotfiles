@@ -1,3 +1,5 @@
 [user]
     name = Anton Waniek
     email = antonwnk@users.noreply.github.com
+[init]
+    defaultBranch = main
