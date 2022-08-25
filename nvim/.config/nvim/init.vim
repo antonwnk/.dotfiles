@@ -3,9 +3,11 @@ source ~/.vimrc
 call plug#begin("~/.config/nvim/plugged")
   " Plugin Section
 
-  Plug 'morhetz/gruvbox'
-  Plug 'joshdick/onedark.vim'
-  Plug 'iCyMind/NeoSolarized'
+  Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+
+  " Plug 'morhetz/gruvbox'
+  " Plug 'joshdick/onedark.vim'
+  " Plug 'iCyMind/NeoSolarized'
 
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
@@ -33,11 +35,14 @@ call plug#end()
 " nmap <leader>ss <plug>(SubversiveSubstituteWordRange)
 
 " Everything after this line will be the config section
+
+let g:tokyonight_sytle = "night"
+
 if (has("termguicolors"))
   set termguicolors
 endif
 set background=dark
-colorscheme onedark
+colorscheme tokyonight
 
 " Fzf
 nnoremap <C-p> :GFiles<CR>
@@ -49,7 +54,7 @@ let g:fzf_action = {
 
 " Lightline
 let g:lightline = {
-  \     'colorscheme': 'powerlineish',
+  \     'colorscheme': 'tokyonight',
   \     'active': {
   \         'left': [['mode', 'paste' ], ['readonly', 'filename', 'modified']],
   \         'right': [['lineinfo'], ['percent'], ['fileformat', 'fileencoding']]
