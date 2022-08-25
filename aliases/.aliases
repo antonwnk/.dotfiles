@@ -12,6 +12,7 @@ alias la="ls -lah"
 alias lt="ls -lh --tree"
 alias lg="ls -lh --git"
 lb() { test -f "$1" && bat "$@" || ll "$@" } # Best quick navigation tool, list if it's a folder, cat if it's a file.
+lba() { test -f "$1" && bat "$@" || la "$@" }
 alias grep="grep --color=auto"
 alias utop="top -u $USER"
 alias lc="wc -l"
