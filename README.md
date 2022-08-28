@@ -7,6 +7,9 @@ This is a personal repository that _is supposed_ to track shell (& essentials) c
 
 The repository consists of config files for [zsh](https://www.zsh.org/), [tmux](https://github.com/tmux/tmux), and [neovim](https://github.com/neovim/neovim). Several other binaries/tools are expected to be present in order to fully configure the aforementioned. These are:
 - [oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh)
+- [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md)
+- [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md)
+- [zsh-history-substring-search](https://github.com/zsh-users/zsh-history-substring-search)
 - [fzf](https://github.com/junegunn/fzf)
 - [nodejs](https://github.com/nvm-sh/nvm) (for nvim LSPs)
 - [vim-plug](https://github.com/junegunn/vim-plug)
