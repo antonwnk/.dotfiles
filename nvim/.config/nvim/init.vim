@@ -15,6 +15,7 @@ call plug#begin("~/.config/nvim/plugged")
   Plug 'itchyny/lightline.vim'
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-commentary'
   Plug 'svermeulen/vim-cutlass'
   Plug 'tommcdo/vim-exchange'
   Plug 'ryanoasis/vim-devicons'
@@ -22,8 +23,8 @@ call plug#begin("~/.config/nvim/plugged")
   " Plug 'easymotion/vim-easymotion'
   " Plug 'justinmk/vim-sneak'
   " Plug 'vim-airline/vim-airline'
-  " Plug 'vim-airline/vim-airline-themes'
-call plug#end()
+  " " Plug 'vim-airline/vim-airline-themes'
+" call plug#end()
 
 " " svermeulen/vim-subversive mappings
 " nmap s <plug>(SubversiveSubstitute)
