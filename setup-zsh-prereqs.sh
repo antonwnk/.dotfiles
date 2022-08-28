@@ -14,7 +14,7 @@ command_or_bust() {
 
 command_or_bust zsh
 
-if [[ ! command_exists omz ]]; then
+if ! command_exists omz; then
   sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
