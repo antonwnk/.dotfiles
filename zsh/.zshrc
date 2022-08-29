@@ -117,6 +117,11 @@ export LESS=-R
 # Use vi mode in terminal
 bindkey -v
 bindkey kj vi-cmd-mode
+## Set VIM editing mode on hitting the escape key
+#ZVM_VI_INSERT_ESCAPE_BINDKEY=kj
+## Always starting with insert mode for each command line
+#ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
+
 
 # Manjaro-Zsh-Config bindkeys
 bindkey '^[[7~' beginning-of-line                               # Home key
