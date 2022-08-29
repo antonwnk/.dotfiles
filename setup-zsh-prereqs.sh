@@ -35,7 +35,7 @@ if [[ ! -d "$substr_search_dir" ]]; then
   git clone https://github.com/zsh-users/zsh-history-substring-search "$substr_search_dir" 
 fi
 
-if [ -z "$installed_omz" ]; then
+if [ -n "$installed_omz" ]; then
   echo
   echo
   echo "Oh-My-Zsh was installed from this script, make sure to re-source ~/.zshrc."
