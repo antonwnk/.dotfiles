@@ -14,6 +14,7 @@ call plug#begin("~/.config/nvim/plugged")
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'itchyny/lightline.vim'
   Plug 'tpope/vim-fugitive'
+  Plug 'tpope/vim-rhubarb'
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-commentary'
   Plug 'svermeulen/vim-cutlass'
