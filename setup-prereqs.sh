@@ -35,6 +35,11 @@ if [[ ! -d "$substr_search_dir" ]]; then
   git clone https://github.com/zsh-users/zsh-history-substring-search "$substr_search_dir" 
 fi
 
+tmux_plugin_mgr_dir="$HOME/.tmux/plugins/tpm"
+if [[ ! -d "$tmux_plugin_mgr_dir" ]]; then
+    git clone https://github.com/tmux-plugins/tpm "$tmux_plugin_mgr_dir"
+fi
+
 if [ -n "$installed_omz" ]; then
   echo
   echo
