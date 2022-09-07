@@ -58,13 +58,33 @@ let g:fzf_action = {
 let g:lightline = {
   \     'colorscheme': 'tokyonight',
   \     'active': {
-  \         'left': [['mode', 'paste' ], ['cocstatus', 'readonly', 'filename', 'modified']],
+  \         'left': [['mode', 'paste' ], ['readonly', 'modified', 'filename', 'cocfuncname', 'cocstatus']],
   \         'right': [['lineinfo'], ['percent'], ['fileformat', 'fileencoding']]
   \     },
   \     'component_function': {
-  \         'cocstatus': 'coc#status' 
+  \         'cocstatus': 'StatusDiagnostic',
+  \         'cocfuncname': 'CocCurrentFunction'
   \     }
   \ }
+
+
+function! StatusDiagnostic() abort
+  let info = get(b:, 'coc_diagnostic_info', {})
+  if empty(info) | return '' | endif
+  let msgs = []
+  if get(info, 'error', 0)
+    call add(msgs, 'E' . info['error'])
+  endif
+  if get(info, 'warning', 0)
+    call add(msgs, 'W' . info['warning'])
+  endif
+  return join(msgs, ' ') . ' ' . get(g:, 'coc_status', '')
+endfunction
+
+function! CocCurrentFunction() abort
+  return get(b:, 'coc_current_function', '')
+endfunction
+
 autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
 " COC Setup
@@ -84,7 +104,7 @@ else
   set signcolumn=yes
 endif
 "" Use tab for trigger completion with characters ahead and navigate.
-"" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+"" NOTE: Use command 'verbose imap <tab>' to make sure tab is not mapped by
 "" other plugin before putting this into your config.
 "" inoremap <silent><expr> <TAB>
 "       \ pumvisible() ? "\<C-n>" :
