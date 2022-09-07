@@ -58,10 +58,14 @@ let g:fzf_action = {
 let g:lightline = {
   \     'colorscheme': 'tokyonight',
   \     'active': {
-  \         'left': [['mode', 'paste' ], ['readonly', 'filename', 'modified']],
+  \         'left': [['mode', 'paste' ], ['cocstatus', 'readonly', 'filename', 'modified']],
   \         'right': [['lineinfo'], ['percent'], ['fileformat', 'fileencoding']]
+  \     },
+  \     'component_function': {
+  \         'cocstatus': 'coc#status' 
   \     }
   \ }
+autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
 " COC Setup
 " Give more space for displaying messages.
