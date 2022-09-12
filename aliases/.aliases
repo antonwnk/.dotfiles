@@ -24,6 +24,16 @@ alias nv="nvim"
 alias nvi="nvim -R"
 alias nview="nvim -R"
 nvin() { ( cd "$1" && nvim . ) }
+pypkg() {
+    pkg_init=$(python -c "import $1; print($1.__file__)") && \
+    pkg_dir=$(dirname "$pkg_init") && \
+    ( cd "$pkg_dir" && nvim -R . )
+}
+pyedpkg() {
+    pkg_init=$(python -c "import $1; print($1.__file__)") && \
+    pkg_dir=$(dirname "$pkg_init") && \
+    ( cd "$pkg_dir" && nvim . )
+}
 alias untargz="tar -zxvf"
 alias cls=clear
 alias datefull="date +%F"
