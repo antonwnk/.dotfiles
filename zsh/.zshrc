@@ -117,6 +117,9 @@ export LESS=-R
 # Use vi mode in terminal
 bindkey -v
 bindkey kj vi-cmd-mode
+bindkey Kj vi-cmd-mode
+bindkey kJ vi-cmd-mode
+bindkey KJ vi-cmd-mode
 ## Set VIM editing mode on hitting the escape key
 #ZVM_VI_INSERT_ESCAPE_BINDKEY=kj
 ## Always starting with insert mode for each command line

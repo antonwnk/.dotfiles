@@ -61,5 +61,8 @@ set foldmethod=manual
 " set nofoldenable
 " set foldlevel=2
 
-imap kj <Esc>
+inoremap kj <Esc>
+inoremap Kj <Esc>
+inoremap kJ <Esc>
+inoremap KJ <Esc>
 
