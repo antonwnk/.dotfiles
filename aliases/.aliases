@@ -107,6 +107,8 @@ gogit () {
 bdiff() {
     git diff --name-only --diff-filter=d | xargs bat --diff
 }
+# Fzf with bat as file preview
+alias fzfiles="fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}'"
 
 # shell editing aliases
 alias rced="nvim ~/.zshrc"

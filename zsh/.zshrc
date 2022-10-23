@@ -82,6 +82,7 @@ source $ZSH/oh-my-zsh.sh
 source $HOME/.aliases
 
 export FZF_BASE="$HOME/.fzf/bin/fzf"
+export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git/*"'
 
 setopt notify
 setopt correct                                                  # Auto correct mistakes
