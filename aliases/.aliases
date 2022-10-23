@@ -128,3 +128,7 @@ alias upg="sudo apt-get upgrade"
 # ARES
 alias devvenv="source ~/ARES/.devvenv/bin/activate"
 alias buildenv="source ~/EKS_ARES/source.env"
+
+# WSL
+wslpath() { command wslpath -a $( echo -n -E "$@" | sed 's/\\/\\\\\\/g' ) }
+
