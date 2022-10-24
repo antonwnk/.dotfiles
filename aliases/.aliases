@@ -127,8 +127,8 @@ alias nved="nvim ~/.config/nvim"
 alias upd="sudo apt-get update"
 alias upg="sudo apt-get upgrade"
 
+alias devvenv="source ~/.devvenv/bin/activate"
 # ARES
-alias devvenv="source ~/ARES/.devvenv/bin/activate"
 alias buildenv="source ~/EKS_ARES/source.env"
 
 # WSL
