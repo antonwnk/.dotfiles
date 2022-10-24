@@ -25,7 +25,7 @@ command_or_bust nvim
 
 
 vim_plug_dir="${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim
-if [[ ! -d "$vim_plug_dir" ]]; then
+if [[ ! -f "$vim_plug_dir" ]]; then
   so_question_mark=$(confirm_install "Seems that vim-plug is missing.")
   if [[ "$so_question_mark" == "yes" ]]; then
     curl -fLo "$vim_plug_dir"  --create-dirs \
