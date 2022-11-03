@@ -9,6 +9,9 @@
     editor = nvim
     pager = delta
 
+[diff]
+    tool = nvimdiff
+
 [interactive]
     diffFilter = delta --color-only
 
