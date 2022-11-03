@@ -16,7 +16,7 @@
     diffFilter = delta --color-only
 
 [alias]
-        root = rev-parse --show-toplevel
+    root = rev-parse --show-toplevel
 
 [delta]
     features = decorations interactive
