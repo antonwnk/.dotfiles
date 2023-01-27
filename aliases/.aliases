@@ -11,8 +11,8 @@ alias ll="ls -lh"
 alias la="ls -lah"
 alias lt="ls -lh --tree"
 alias lg="ls -lh --git"
-lb() { test -f "$1" && bat "$@" || ll "$@" } # Best quick navigation tool, list if it's a folder, cat if it's a file.
-lba() { test -f "$1" && bat "$@" || la "$@" }
+lb() { test -f "$1" && bat "$@" || ll "$@" ; } # Best quick navigation tool, list if it's a folder, cat if it's a file.
+lba() { test -f "$1" && bat "$@" || la "$@" ; }
 alias grep="grep --color=auto"
 alias utop="top -u $USER"
 alias lc="wc -l"
@@ -23,17 +23,17 @@ alias diffd="diff -rq"
 alias nv="nvim"
 alias nvi="nvim -R"
 alias nview="nvim -R"
-nvin() { ( cd "$1" && nvim . ) }
-pywhich() { dirname $(python -c "import $1; print($1.__file__)") }
+nvin() { ( cd "$1" && nvim . ) ; }
+pywhich() { dirname $(python -c "import $1; print($1.__file__)") ; }
 pypkg() {
     pkg_init=$(python -c "import $1; print($1.__file__)") && \
     pkg_dir=$(dirname "$pkg_init") && \
-    ( cd "$pkg_dir" && nvim -R . )
+    ( cd "$pkg_dir" && nvim -R . ) ;
 }
 pyedpkg() {
     pkg_init=$(python -c "import $1; print($1.__file__)") && \
     pkg_dir=$(dirname "$pkg_init") && \
-    ( cd "$pkg_dir" && nvim . )
+    ( cd "$pkg_dir" && nvim . ) ;
 }
 alias untargz="tar -zxvf"
 alias cls=clear
@@ -44,7 +44,7 @@ alias ipy="ipython --TerminalInteractiveShell.editing_mode=vi"
 alias ipyl="ipython --profile=ipylab --TerminalInteractiveShell.editing_mode=vi"
 countf() { ls "$@"| wc -l ; }
 yesterdate() { date --date="$1 days ago" ; }
-math() { echo "$(( $@ ))" }
+math() { echo "$(( $@ ))" ; }
 # from stefaanlippens.net/pretty-csv.html
 pretty_csv() { perl -pe 's/((?<=,)|(?<=^)),/ ,/g;' "$@" | column -t -s, | less -F -S -X -K ; }
 pretty_tsv() { perl -pe 's/((?<=\t)|(?<=^))\t/ \t/g;' "$@" | column -t -s, | less -F -S -X -K ; }
@@ -95,7 +95,7 @@ alias snifflocalhostport="sudo tcpflow -X /dev/null -p -c -i lo port"
 alias gfe="git fetch && git status"
 alias gdc="git diff --cached"
 alias gdn="git diff --name-status"
-ls-tracked() { git ls-tree -r "${@:-$(git rev-parse HEAD)}" --name-only | fzf }
+ls-tracked() { git ls-tree -r "${@:-$(git rev-parse HEAD)}" --name-only | fzf ; }
 gogit () {
         if [[ -d "$@" ]]
         then
@@ -105,7 +105,7 @@ gogit () {
         fi
 }
 bdiff() {
-    git diff --name-only --diff-filter=d | xargs bat --diff
+    git diff --name-only --diff-filter=d | xargs bat --diff ;
 }
 # Fzf with bat as file preview
 alias fzfiles="fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}'"
@@ -132,5 +132,5 @@ alias devvenv="source ~/.devvenv/bin/activate"
 alias buildenv="source ~/EKS_ARES/source.env"
 
 # WSL
-wslpath() { command wslpath -a $( echo -n -E "$@" | sed 's/\\/\\\\\\/g' ) }
+wslpath() { command wslpath -a $( echo -n -E "$@" | sed 's/\\/\\\\\\/g' ) ; }
 
