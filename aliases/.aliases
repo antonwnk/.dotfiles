@@ -3,7 +3,7 @@ alias cd..="cd .."
 alias cdd="cd .."
 alias cddd="cd ../.."
 
-if command -v exa &> /dev/null
+if exa "$HOME" &> /dev/null
 then
     alias ls=exa
 fi
@@ -99,9 +99,9 @@ ls-tracked() { git ls-tree -r "${@:-$(git rev-parse HEAD)}" --name-only | fzf ; 
 gogit () {
         if [[ -d "$@" ]]
         then
-                cd "$@" && git fetch && git status && cd -
+                cd "$@" && git fetch && git status && cd -;
         else
-                git clone "$@"
+                git clone "$@";
         fi
 }
 bdiff() {
@@ -128,9 +128,9 @@ alias upd="sudo apt-get update"
 alias upg="sudo apt-get upgrade"
 
 alias devvenv="source ~/.devvenv/bin/activate"
-# ARES
-alias buildenv="source ~/EKS_ARES/source.env"
 
 # WSL
 wslpath() { command wslpath -a $( echo -n -E "$@" | sed 's/\\/\\\\\\/g' ) ; }
 
+#Snafu removed by BFG
+#Snafu removed by BFG
