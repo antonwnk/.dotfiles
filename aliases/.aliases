@@ -7,6 +7,7 @@ if exa "$HOME" &> /dev/null
 then
     alias ls=exa
 fi
+alias lsl="ls -1"
 alias ll="ls -lh"
 alias la="ls -lah"
 alias lt="ls -lh --tree"
@@ -132,5 +133,5 @@ alias devvenv="source ~/.devvenv/bin/activate"
 # WSL
 wslpath() { command wslpath -a $( echo -n -E "$@" | sed 's/\\/\\\\\\/g' ) ; }
 
-#Snafu removed by BFG
-#Snafu removed by BFG
+# TestArena
+alias dev_ta_cli="/exp/s2p/patch/awaniek/testarena/TA3/TATM/src/commandline/testarena.py"
