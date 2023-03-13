@@ -7,6 +7,7 @@ if exa "$HOME" &> /dev/null
 then
     alias ls=exa
 fi
+alias lsl="ls -1"
 alias ll="ls -lh"
 alias la="ls -lah"
 alias lt="ls -lh --tree"
