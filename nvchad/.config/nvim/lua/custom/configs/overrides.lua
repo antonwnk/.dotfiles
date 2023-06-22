@@ -52,6 +52,14 @@ M.mason = {
     -- c/cpp stuff
     "clangd",
     "clang-format",
+
+    -- python
+    "pyright",
+    "black",
+    "usort",
+
+    -- config stuff
+    "yaml-language-server",
   },
 }
 
