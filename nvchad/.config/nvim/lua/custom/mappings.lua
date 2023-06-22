@@ -11,8 +11,14 @@ M.general = {
 
   n = {
     [";"] = { ":", "Enter command mode", opts = { nowait = true } },
+    -- Git stuff
     ["<leader>gs"] = { vim.cmd.Git, "Show fugitive status menu" },
-
+    ["<leader>sh"] = {
+      function ()
+        require("gitsigns").stage_hunk()
+      end,
+      "Stage hunk",
+    },
     -- Navigation
     ["n"] = { "nzzzv", "Keep search result centered (next)" },
     ["N"] = { "Nzzzv", "Keep search result centered (prev)" },
