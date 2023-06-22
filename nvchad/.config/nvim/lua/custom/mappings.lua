@@ -10,8 +10,8 @@ local M = {}
 M.general = {
 
   n = {
-    -- [";"] = { ":", "Enter command mode", opts = { nowait = true } },
-    -- ["<leader>gs"] = { vim.cmd.Git, "Show fugitive status menu" },
+    [";"] = { ":", "Enter command mode", opts = { nowait = true } },
+    ["<leader>gs"] = { vim.cmd.Git, "Show fugitive status menu" },
 
     -- Navigation
     ["n"] = { "nzzzv", "Keep search result centered (next)" },
