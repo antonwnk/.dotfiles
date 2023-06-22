@@ -24,7 +24,7 @@ local servers = {
   },
 }
 
-for lsp, settings in ipairs(servers) do
+for lsp, settings in pairs(servers) do
   lspconfig[lsp].setup {
     on_attach = on_attach,
     capabilities = capabilities,
