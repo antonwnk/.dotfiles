@@ -17,6 +17,12 @@ local plugins = {
       },
       { "folke/neodev.nvim", ft = "lua" },
       { "j-hui/fidget.nvim", tag = "legacy" },
+      { "simrat39/symbols-outline.nvim", config = true },
+      {
+        "stevearc/aerial.nvim",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        config = true,
+      }
     },
     config = function()
       require "plugins.configs.lspconfig"
