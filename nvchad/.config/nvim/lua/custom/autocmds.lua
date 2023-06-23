@@ -24,6 +24,16 @@ autocmd('TextYankPost', {
   pattern = '*',
 })
 
+-- Lazy set folding options
+autocmd('FileType', {
+  pattern = '*',
+  callback = function ()
+    vim.wo.foldmethod = "expr"
+    vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
+    vim.wo.foldenable = false
+  end
+})
+
 -- -- Set tab options for Go files
 -- autocmd('FileType', {
 --   pattern = 'go',

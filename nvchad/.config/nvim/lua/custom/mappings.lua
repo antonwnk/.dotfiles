@@ -11,14 +11,6 @@ M.general = {
 
   n = {
     [";"] = { ":", "Enter command mode", opts = { nowait = true } },
-    -- Git stuff
-    ["<leader>gs"] = { vim.cmd.Git, "Show fugitive status menu" },
-    ["<leader>sh"] = {
-      function ()
-        require("gitsigns").stage_hunk()
-      end,
-      "Stage hunk",
-    },
     -- Navigation
     ["n"] = { "nzzzv", "Keep search result centered (next)" },
     ["N"] = { "Nzzzv", "Keep search result centered (prev)" },
@@ -45,6 +37,34 @@ M.general = {
     ["<leader>y"] = { '"+y', "Yank to system clipboard" },
   },
 
+}
+
+M.telescope = {
+
+  n = {
+    ["<leader>fs"] = { "<cmd> Telescope lsp_document_symbols <CR>", "Find symbol in document" },
+    ["<leader>ws"] = { "<cmd> Telescope lsp_dynamic_workspace_symbols", "Find symbol in workspace" },
+  }
+}
+
+M.git = {
+
+  n = {
+    -- safe to not wrap in a function because fugitive is not lazy (my working theory)
+    ["<leader>gs"] = { vim.cmd.Git, "Show fugitive status menu" },
+  }
+}
+
+M.gitsigns = {
+
+  n = {
+    ["<leader>sh"] = {
+      function ()
+        require("gitsigns").stage_hunk()
+      end,
+      "Stage hunk",
+    },
+  }
 }
 
 -- more keybinds!
