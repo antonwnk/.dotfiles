@@ -11,6 +11,7 @@ M.general = {
 
   n = {
     [";"] = { ":", "Enter command mode", opts = { nowait = true } },
+    [":"] = { ";", "Repeat motion" },
     -- Navigation
     ["n"] = { "nzzzv", "Keep search result centered (next)" },
     ["N"] = { "Nzzzv", "Keep search result centered (prev)" },

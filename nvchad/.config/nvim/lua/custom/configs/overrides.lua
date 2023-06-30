@@ -74,6 +74,10 @@ M.treesitter = {
   },
 }
 
+M.treesitter_context = {
+  separator = "-",
+}
+
 M.telescope = {
   pickers = {
     buffers = {

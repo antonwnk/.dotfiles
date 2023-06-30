@@ -46,6 +46,11 @@ local plugins = {
   },
 
   {
+    "nvim-treesitter/nvim-treesitter-context",
+    opts = overrides.treesitter_context,
+  },
+
+  {
     "nvim-telescope/telescope.nvim",
     opts = overrides.telescope,
   },
