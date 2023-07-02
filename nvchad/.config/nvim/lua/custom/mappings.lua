@@ -1,6 +1,8 @@
 ---@type MappingsTable
 local M = {}
 
+local ts_repeat = "nvim-treesitter.textobjects.repeatable_move"
+
 -- M.disabled = {
 --   i = {
 --     ["jk"] = "",
@@ -11,7 +13,7 @@ M.general = {
 
   n = {
     [";"] = { ":", "Enter command mode", opts = { nowait = true } },
-    [":"] = { ";", "Repeat motion" },
+    -- [":"] = { ";", "Repeat motion" },
     -- Navigation
     ["n"] = { "nzzzv", "Keep search result centered (next)" },
     ["N"] = { "Nzzzv", "Keep search result centered (prev)" },
@@ -56,9 +58,33 @@ M.git = {
   }
 }
 
+local rt_state
+-- only attempt to require the original mappings at the first invokation
+if not package.loaded["custom.runtime_state"] then
+  rt_state = require("custom.runtime_state")
+  rt_state.gitsigns_original_next_hunk = require("core.mappings").gitsigns.n["]c"][1]
+  rt_state.gitsigns_original_prev_hunk = require("core.mappings").gitsigns.n["[c"][1]
+end
+
 M.gitsigns = {
 
   n = {
+    ["]c"] = {
+      function()
+        local go_next_hunk, _ = require(ts_repeat).make_repeatable_move_pair(
+          require("custom.runtime_state").gitsigns_original_next_hunk,
+          require("custom.runtime_state").gitsigns_original_prev_hunk
+        )
+        go_next_hunk()
+      end, "Go to next hunk (treesitter repeatable)" },
+    ["[c"] = {
+      function()
+        local go_prev_hunk, _ = require(ts_repeat).make_repeatable_move_pair(
+          require("custom.runtime_state").gitsigns_original_prev_hunk,
+          require("custom.runtime_state").gitsigns_original_next_hunk
+        )
+        go_prev_hunk()
+      end, "Go to prev hunk (treesitter repeatable)" },
     ["<leader>sh"] = {
       function ()
         require("gitsigns").stage_hunk()
@@ -68,9 +94,33 @@ M.gitsigns = {
   }
 }
 
--- more keybinds!
--- vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
--- vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+M.treesitter = {
+
+  n = {
+    [":"] = { function () require(ts_repeat).repeat_last_move_next() end, "Repeat move forwards (treesitter patched)" },
+    [","] = { function () require(ts_repeat).repeat_last_move_previous() end, "Repeat move backwards (treesitter patched)" },
+    ["f"] = { function () require(ts_repeat).builtin_f() end, "Go to first occurence in line (treesitter patched)" },
+    ["F"] = { function () require(ts_repeat).builtin_F() end, "Go to previous occurence in line (treesitter patched)" },
+    ["t"] = { function () require(ts_repeat).builtin_t() end, "Go till first occurence in line (treesitter patched)" },
+    ["T"] = { function () require(ts_repeat).builtin_T() end, "Go till previous occurence in line (treesitter patched)" },
+  },
+  x = {
+    [":"] = { function () require(ts_repeat).repeat_last_move_next() end, "Repeat move treesitter forwards (treesitter patched)" },
+    [","] = { function () require(ts_repeat).repeat_last_move_previous() end, "Repeat move treesitter backwards (treesitter patched)" },
+    ["f"] = { function () require(ts_repeat).builtin_f() end, "Go to first occurence in line (treesitter patched)" },
+    ["F"] = { function () require(ts_repeat).builtin_F() end, "Go to previous occurence in line (treesitter patched)" },
+    ["t"] = { function () require(ts_repeat).builtin_t() end, "Go till first occurence in line (treesitter patched)" },
+    ["T"] = { function () require(ts_repeat).builtin_T() end, "Go till previous occurence in line (treesitter patched)" },
+  },
+  o = {
+    [":"] = { function () require(ts_repeat).repeat_last_move_next() end, "Repeat move treesitter forwards (treesitter patched)" },
+    [","] = { function () require(ts_repeat).repeat_last_move_previous() end, "Repeat move treesitter backwards (treesitter patched)" },
+    ["f"] = { function () require(ts_repeat).builtin_f() end, "Go to first occurence in line (treesitter patched)" },
+    ["F"] = { function () require(ts_repeat).builtin_F() end, "Go to previous occurence in line (treesitter patched)" },
+    ["t"] = { function () require(ts_repeat).builtin_t() end, "Go till first occurence in line (treesitter patched)" },
+    ["T"] = { function () require(ts_repeat).builtin_T() end, "Go till previous occurence in line (treesitter patched)" },
+  },
+}
 
 return M
 
