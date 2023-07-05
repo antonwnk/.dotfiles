@@ -17,7 +17,13 @@ local plugins = {
       },
       { "folke/neodev.nvim", ft = "lua" },
       { "j-hui/fidget.nvim", tag = "legacy" },
-      { "simrat39/symbols-outline.nvim", config = true },
+      {
+        "simrat39/symbols-outline.nvim",
+        init = function()
+          require("core.utils").load_mappings "symbols_outline"
+        end,
+        config = true,
+      },
       {
         "stevearc/aerial.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" },

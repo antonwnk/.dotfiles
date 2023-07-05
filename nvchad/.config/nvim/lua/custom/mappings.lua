@@ -124,5 +124,13 @@ M.treesitter = {
   },
 }
 
+M.symbols_outline = {
+  plugin = true,
+
+  n = {
+    ["<leader>so"] = { "<cmd> SymbolsOutline <CR>", "Toggle Symbol outline view" },
+  },
+}
+
 return M
 
