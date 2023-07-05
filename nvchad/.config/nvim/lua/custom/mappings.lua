@@ -3,6 +3,16 @@ local M = {}
 
 local ts_repeat = "nvim-treesitter.textobjects.repeatable_move"
 
+-- Do some setup to be able to wrap default keybinds before they are overwritten
+local rt_state
+-- Grab initial keybindings only the first time this file is loaded
+-- (i.e. before the "core.mappings" module gets merged with "custom.mappings")
+if not package.loaded["custom.runtime_state"] then
+  rt_state = require("custom.runtime_state")
+  rt_state.gitsigns_original_next_hunk = require("core.mappings").gitsigns.n["]c"][1]
+  rt_state.gitsigns_original_prev_hunk = require("core.mappings").gitsigns.n["[c"][1]
+end
+
 -- M.disabled = {
 --   i = {
 --     ["jk"] = "",
@@ -57,14 +67,6 @@ M.git = {
     ["<leader>gs"] = { vim.cmd.Git, "Show fugitive status menu" },
   }
 }
-
-local rt_state
--- only attempt to require the original mappings at the first invokation
-if not package.loaded["custom.runtime_state"] then
-  rt_state = require("custom.runtime_state")
-  rt_state.gitsigns_original_next_hunk = require("core.mappings").gitsigns.n["]c"][1]
-  rt_state.gitsigns_original_prev_hunk = require("core.mappings").gitsigns.n["[c"][1]
-end
 
 M.gitsigns = {
 
