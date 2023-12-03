@@ -12,6 +12,7 @@ M.treesitter = {
     "c",
     "markdown",
     "markdown_inline",
+    "yaml",
   },
   indent = {
     enable = true,
@@ -90,7 +91,20 @@ M.telescope = {
         }
       }
     }
-  }
+  },
+  extensions_list = { "live_grep_args" },
+  extensions = {
+    live_grep_args = {
+      auto_quoting = true,
+      mappings = {
+        i = {
+          ["<C-'>"] = function(bufnr) require("telescope-live-grep-args.actions").quote_prompt()(bufnr) end,
+          ["<C-f>"] = function(bufnr) require("telescope-live-grep-args.actions").quote_prompt({ postfix = "  -t" })(bufnr) end,
+          ["<C-i>"] = function(bufnr) require("telescope-live-grep-args.actions").quote_prompt({ postfix = "  --iglob " })(bufnr) end,
+        },
+      },
+    },
+  },
 }
 
 M.mason = {

@@ -58,6 +58,14 @@ local plugins = {
 
   {
     "nvim-telescope/telescope.nvim",
+    dependencies = {
+      {
+        "nvim-telescope/telescope-live-grep-args.nvim",
+        version = "^1.0.0",
+        -- module = nil,
+        cmd = "Telescope",
+      }
+    },
     opts = overrides.telescope,
   },
 

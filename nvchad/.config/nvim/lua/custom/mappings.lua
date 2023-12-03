@@ -57,6 +57,7 @@ M.telescope = {
   n = {
     ["<leader>fs"] = { "<cmd> Telescope lsp_document_symbols <CR>", "Find symbol in document" },
     ["<leader>ws"] = { "<cmd> Telescope lsp_dynamic_workspace_symbols <CR>", "Find symbol in workspace" },
+    ["<leader>fg"] = { "<cmd> Telescope live_grep_args <CR>", "Live grep with args" },
   }
 }
 

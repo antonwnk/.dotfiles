@@ -60,6 +60,7 @@ alias scrx="screen -x"
 gpip() { PIP_REQUIRE_VIRTUALENV=0 pip "$@" ; }
 
 # Kubernetes (additional) stuff
+alias k=kubectl
 kgrep() { alias | grep "kubectl $@" ; }
 #kgpn() { kubectl get po --namespace="$1" "${@:2}" ; } # Already existed actually
 alias kdpn="kubectl describe po -n"
