@@ -44,6 +44,7 @@ M.general = {
   },
 
   v = {
+    [";"] = { ":", "Enter command mode", opts = { nowait = true } },
     ["J"] = { ":m '>+1<CR>gv=gv", "Move selected up" },
     ["K"] = { ":m '<-2<CR>gv=gv", "Move selected down" },
     ["<leader>d"] = { '"_d', "Delete without overwrite" },
